@@ -30,24 +30,6 @@ A good search experience benefits the organization by reducing time to find know
 
 Search is about enabling people to find the authoritative information within the organization easily using a set of keywords or search terms, or based in their activities. The results may come from the Microsoft 365 platform or other systems which have been connected into the search process.
 
-## Common Microsoft 365 Search technologies
-
-- Microsoft Search (using Microsoft Graph)
-  - Office search
-  - Microsoft Search in Bing
-  - SharePoint Modern Search
-  - Modern Search Web Parts
-  - Delve
-  - Search Connectors
-- Bing
-- SharePoint Search
-  - Classic/Enterprise Search
-- SQL Search
-- Business Data Services (BDS)
-- Cortana
-- Power BI Q&A
-- Managed Metadata/Term Stores
-- eDiscovery and audit (Compliance Centre)
 
 ## Evolution of this competency
 
@@ -125,9 +107,9 @@ Some individuals are key knowledge sources, impeding their work and/or becoming 
 
 Productivity is compromised; compliance activities are weak; organizational and colleague knowledge are poorly leveraged and there is a pervasive frustration at the inability to find things.
 
-### Level 200 - Repeatable
+### Level 200 - Managed
 
-**[Repeatable level](microsoft365-maturity-model--intro.md#level-200---repeatable)** characteristics include:
+**[Managed level](microsoft365-maturity-model--intro.md#level-200---managed)** characteristics include:
 
 #### 200 Governance, Risk, Compliance & Security
 
@@ -195,9 +177,9 @@ Search actively adds value to organizations, releasing staff time, improving com
 
 At this level, Search becomes an asset to the organization. This has been recognized as an enabler that develops more efficient and effective employees. The capabilities of search are harnessed to improve the experience of businesses applications.
 
-### Level 400 - Managed
+### Level 400 - Predictable
 
-**[Managed level](microsoft365-maturity-model--intro.md#level-400---managed-capable)** characteristics include:
+**[Predictable level](microsoft365-maturity-model--intro.md#level-400---predictable)** characteristics include:
 
 #### 400 Governance, Risk, Compliance & Security
 
@@ -242,7 +224,7 @@ Search results can be relied on; the current versions are reliably returned; ina
 
 ### Level 500 - Optimizing
 
-**[Optimizing level](microsoft365-maturity-model--intro.md#level-500---optimizing-efficient)** characteristics include:
+**[Optimizing level](microsoft365-maturity-model--intro.md#level-500---optimizing)** characteristics include:
 
 Search is part of everyday life for an employee at the organization. New innovative ways of exposing content are investigated. Search metrics are used to analyze user behavior and understand gaps in the information that is being returned.
 
@@ -289,7 +271,7 @@ Staff are committed to the content processes that maintain search; at the same t
 - Staff searching for internal and market news relating to an insight or innovation they are considering. An engineer researching a solution to a manufacturing failure, who needs to collate procedure, machine manuals, line SPC data and actions alongside reports of similar events outside the company.
 - The legal team finds contracts which will expire soon and can work on renewals where appropriate.
 
-## Cost & benefit
+### Cost & benefit
 
 The following benefits can be achieved as the Search Competency increases in maturity:
 
@@ -319,6 +301,25 @@ Search enhances the other competencies and is a great way to begin reaping rewar
 
 Organizations should capture success stories to provide examples of the benefits to ensure that this essential service gets the attention and resources that is required for it to be a successful resource.
 
+## Common Microsoft 365 Search technologies
+
+- Microsoft Search (using Microsoft Graph)
+  - Office search
+  - Microsoft Search in Bing
+  - SharePoint Modern Search
+  - Modern Search Web Parts
+  - Delve
+  - Search Connectors
+- Bing
+- SharePoint Search
+  - Classic/Enterprise Search
+- SQL Search
+- Business Data Services (BDS)
+- Cortana
+- Power BI Q&A
+- Managed Metadata/Term Stores
+- eDiscovery and audit (Compliance Centre)
+- 
 ## Resources
 
 [!INCLUDE [mm4m365-practitioners](includes/mm4m365-practitioners.md)]

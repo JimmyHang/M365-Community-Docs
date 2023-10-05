@@ -502,7 +502,7 @@ Azure Front Door is a global, scalable entry-point that uses the Microsoft globa
 
 Frontline workers are employees whose primary function is to work directly with customers or the general public providing services, support, and selling products, or employees directly involved in the manufacturing and distribution of products or services.  Your frontline workforce is essential to your business. Invest in them with simple, intuitive, and secure solutions from Microsoft 365
 
-### [Fundamentals](/learn/certifications/microsoft-365-fundamentals/)
+### [Fundamentals](/certifications/microsoft-365-fundamentals/)
 
 Microsoft 365 Certified: Fundamentals is a certification to prove that you understand the options available in Microsoft 365 and the benefits of adopting cloud services, the Software as a Service (SaaS) cloud model and implementing Microsoft 365 cloud service.
 
@@ -712,9 +712,9 @@ Deploy and manage containerised applications more easily with a fully managed Ku
 
 ## L
 
-### [Learn](/learn/)
+### [Learn](/training/)
 
-Whether you're just starting or an experienced professional, Microsoft Learn’s hands-on approach helps you arrive at your goals faster, with more confidence and at your own pace.
+Whether you're just starting or an experienced professional, Microsoft Learn training’s hands-on approach helps you arrive at your goals faster, with more confidence and at your own pace.
 
 ### [Lens](https://support.microsoft.com/office/office-lens-for-windows-577ec09d-8da2-4029-8bb7-12f8114f472a)
 
@@ -796,7 +796,7 @@ Generically, metadata means information about something else. In SharePoint meta
 
 A Microsoft Certified Professional (MCP) is a person who has successfully completed professional training for Microsoft products through a certification program run by Microsoft.
 
-### [Microsoft Certified Trainer (MCT)](/learn/certifications/mct-certification)
+### [Microsoft Certified Trainer (MCT)](/certifications/mct-certification)
 
 Microsoft Certified Trainers (MCTs) are the premier technical and instructional experts in Microsoft technologies. Join this exclusive group of worldwide Microsoft technical training professionals and reap the benefits of MCT training certification and membership.
 
@@ -830,7 +830,7 @@ Multi-factor authentication refer to an additional security layer beyond just us
 
 ## N
 
-### [Namespace](/learn/modules/m365-messaging-manage-client-access/plan-namespaces)
+### [Namespace](/training/modules/m365-messaging-manage-client-access/plan-namespaces)
 
 A namespace refers to the conventions we use to determine major and minor names within a specific domain. For example, we need to use the /sites namespace carefully so we don't have collisions. If Harold Robinson wants to create a site at /sites/HRm, then Human Resources will have a problem.
 
@@ -838,7 +838,7 @@ In programming, namespaces can be far more complex - like List.Fields within Mic
 
 ### [Named Locations](/azure/active-directory/conditional-access/location-condition#named-locations)
 
-Locations are named in the Azure portal under Azure Active Directory > Security > Conditional Access > Named locations. These named network locations may include locations like an organization's headquarters network ranges, VPN network ranges, or ranges that you wish to block. Named locations can be defined by IPv4/IPv6 address ranges or by countries.
+Locations are named in the Azure portal under Azure Active Directory > Security > Conditional Access > Named locations. These named network locations may include locations like an organization's headquarters network ranges, VPN network ranges, or ranges that you wish to block. Named locations can be defined by IPv4/IPv6 address ranges or by countries/regions.
 
 ### [Network Policy Server (NPS)](/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-nps)
 
@@ -858,7 +858,7 @@ If your organization is deploying Location-Based Routing for Direct Routing or d
 
 ### [Non Profit licencing](https://www.microsoft.com/microsoft-365/nonprofit/plans-and-pricing?activetab=tab:primaryr1)
 
-Microsoft Tech for Social Impact is dedicated to providing affordable and accessible technology and tools to help nonprofits of all sizes achieve their missions. That’s why Microsoft offer grants and discounts of their products and services to eligible nonprofits around the world, including Microsoft 365 and Office 365. To qualify for nonprofit grants and discounts, you must hold recognized charitable status in your country and sign Microsoft’s non-discrimination policy. Microsoft reserves the right to verify eligibility at any time and to suspend the service for ineligible organizations.
+Microsoft Tech for Social Impact is dedicated to providing affordable and accessible technology and tools to help nonprofits of all sizes achieve their missions. That’s why Microsoft offer grants and discounts of their products and services to eligible nonprofits around the world, including Microsoft 365 and Office 365. To qualify for nonprofit grants and discounts, you must hold recognized charitable status in your country/region and sign Microsoft’s non-discrimination policy. Microsoft reserves the right to verify eligibility at any time and to suspend the service for ineligible organizations.
 
 ## O
 
@@ -1531,7 +1531,7 @@ Microsoft 365 Defender provides XDR capabilities for end-user environments (emai
 
 ### [XP](/answers/questions/126532/xp-level-points.html)
 
-No, not the outdated Windows operating system.  In this case, XP stands for Experience Points in Microsoft Learn.
+No, not the outdated Windows operating system.  In this case, XP stands for Experience Points in Microsoft Learn training.
 
 ## Y
 

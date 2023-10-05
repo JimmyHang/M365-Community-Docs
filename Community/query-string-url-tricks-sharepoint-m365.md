@@ -28,33 +28,33 @@ This article will cover some powerful parameters that you can stick on the tail 
 
 You know this URL brings you to a website:
 
-`https://docs.microsoft.com`
+`https://learn.microsoft.com`
 
 And this one brings you to a specific _section_ of that same website:
 
-`https://docs.microsoft.com/search/`
+`https://learn.microsoft.com/search/`
 
 What about this URL?
 
-`https://docs.microsoft.com/search/?terms=community%20content`
+`https://learn.microsoft.com/search/?terms=community%20content`
 
 It has a **?** at the end with a key (_terms_) and a value (_community content_). This is a **query string**. Based on the key and value in it, we can infer that it might affect or influence the page to show different content.
 
 In this example, we can change the value in our address bar (and hit _return_) and the page content may be different. Example:
 
-`https://docs.microsoft.com/search/?terms=large%lists`
+`https://learn.microsoft.com/search/?terms=large%lists`
 
 ### Multiple filters
 
 Here's an example of multiple filtering with two keys (_products_ and _languages_) with their corresponding values (_m365_ and _javascript_):
 
-`https://docs.microsoft.com/samples/browse`
+`https://learn.microsoft.com/samples/browse`
 
-`https://docs.microsoft.com/samples/browse?products=m365&languages=javascript`
+`https://learn.microsoft.com/samples/browse?products=m365&languages=javascript`
 
 And here's that same page loads different content with different values (_ms-graph_ and _html_)
 
-`https://docs.microsoft.com/samples/browse/?products=ms-graph&languages=html`
+`https://learn.microsoft.com/samples/browse/?products=ms-graph&languages=html`
 
 How does this mental modal of _URL-as-page-transformer_ work in Microsoft 365? Keep reading!
 
@@ -109,7 +109,9 @@ In a page it would be:
 
 `https://<yoursite>.sharepoint.com/sites/<sitename>/SitePages/default.aspx?env=Embedded`
 
-If your page or list are living on a Hub Site, you may notice the Hub Site navigation will remain when using `env=Embedded`. If this is not desirable, e.g. if you are embedding a page using the embed webpart, you can append `?env=WebView` instead. 
+If your page or list are living on a Hub Site, you may notice the Hub Site navigation will remain when using `env=Embedded`. If this is not desirable, e.g. if you are embedding a page using the embed webpart, you can append `?env=WebView` instead.
+
+**Note:** With SharePoint pages, the Org Chart Web Part does not support working with `?env=WebView`.
 
 ### Show Any SharePoint List as a _Microsoft Lists_ List
 
@@ -135,6 +137,21 @@ That's it! Now your SharePoint list displays in Microsoft Lists. This is a great
 >Example:
 > `page.aspx?mykey=myvalue&thisotherkey=someothervalue`
 
+### Redirect users navigation from a List
+
+You can redirect users navigation by including the `?Source=` query string in a list URL. This method could support all those use cases where a user is supposed to click on a link to add a new SharePoint list item. Without the `?Source=` query string, a user would "get stuck" in the the default list view, whereas this query string would help site owners control a user journey.
+
+Example: users visit a SharePoint page containing a link/button/banner to let them fill out a form by adding a new SharePoint list item. The SharePoint page has the following URL: `https://<yoursite>.sharepoint.com/sites/<sitename>/SitePages/<yoursitepage.aspx>`
+
+A SharePoint list uses an out-of-the-box .aspx page, to let users fill out a form and add a new item. For example: `https://<yoursite>.sharepoint.com/sites/<sitename>/Lists/<yourlistname>/NewForm.aspx`
+
+After adding a new item, the `?Source=` query string will redirect users to the previous SharePoint page or any other web resource. A new item URL containing the `?Source=` query string would have a structure like this:
+
+`https://<yoursite>.sharepoint.com/sites/<sitename>/Lists/<yourlistname>/NewForm.aspx?Source=https://<yoursite>.sharepoint.com/sites/<sitename>/SitePages/<yoursitepage.aspx>`
+
+>[!NOTE]
+> This method works even if a user clicks on the "Cancel" button of a list form! Therefore, a redirect to a "Thank you" page would lead to a misleading and inconsistent result, whereas an e-mail message from a Power Automate flow could be a better option, based on a new list item creation or not.
+
 ### Create a Link to a List or Library Search Result
 
 Within the Modern user interface, the search bar sets its context (or scope) to the List, Library, or site you're in. When you perform a search from a list or library, it appends a query string of the search term to the URL. This link is sharable/bookmarkable.
@@ -158,39 +175,79 @@ You can share this link, in a way that works almost like a SharePoint list view.
 >
 >`https://<greatsharepointsite>.sharepoint.com/sites/Lists/<ListName>/AllItems.aspx?view=7&q=engineering&env=Embedded`
 
-## Debug SharePoint Framework Web Parts and Extensions
+### View search vertical immediately
 
-You can troubleshoot a SharePoint page to see if there is a SharePoint Framework (SPFx) extension or web part causing trouble. Add this `?disable3PCode=1` to the end of the URL to disable loading anything SPFx-related:
+After enabling or updating the search vertical, there is a delay of several hours before the changes can be seen on the search page. In that case, you can add `cacheClear=true` to the URL in SharePoint to view the changes immediately.
 
-`https://<yoursite>.sharepoint.com/sites/<sitename>/SitePages/default.aspx?disable3PCode=1`
+Read the official documentation on [View the vertical in the search result page](/microsoftsearch/manage-verticals#view-the-vertical-in-the-search-result-page).
+
+### Debug SharePoint Framework Web Parts and Extensions
+
+You can troubleshoot a SharePoint page to see if there is a SharePoint Framework (SPFx) extension or web part causing trouble. Add this `?disable3PCode` to the end of the URL to disable loading anything SPFx-related:
+
+`https://<yoursite>.sharepoint.com/sites/<sitename>/SitePages/default.aspx?disable3PCode`
 
 Read the official documentation on [Disable SPFx web parts and extensions](/sharepoint/dev/general-development/client-side-web-parts-maintenance-mode#disable-spfx-web-parts-and-extensions).
 
-### Filter Lists and Library views in SharePoint and Microsoft Lists
+## Filtering and sorting modern SharePoint and Microsoft Lists views
 
-SharePoint Lists and Libraries let you filter by specific column values with a query string URL. This might let you have a URL that filters a status column, or shows only items where some value is _true_.
-
-A use-case might be using Power Automate Flow to email a list view status report based on a given product in a list… with hundreds of possible products. You wouldn't want to make separate views for each product. So, you make a single base view and append URL query strings to create dynamic URLs for your Flow emails.
-
-The basic syntax for this is:
-
-`?useFiltersInViewXml=1&FilterField1=<internalFieldName>&FilterValue1=<value>`
-
-(No `<` `>` brackets, you'd type the actual column value)
-
-- The `useFiltersInViewXml=1` tells the List or Library you're appending some filtering criteria.
-- The `FilterField` key needs to be the internal name of the SharePoint column. If you rename 'Title' to 'Product' in your list, you'll need to use 'Title' in your query string URL.
+Built into Modern SharePoint and Microsoft Lists and Libraries are some powerful filtering and sorting query string URLs. Below are some examples.
 
 >[!TIP]
->You can find out the internal name by going to List Settings, choosing the column, and looking after the `&Field=` key in the URL. That's using a query string URL to help you make a query string URL!
+> While the syntax here will help show you the way, you can also build and discover your own query string URLs by using the View's filtering pane. As you toggle boxes for columns in the pane, observe how the URL changes. These query string URLs are bookmarkable and sharable!
 
-- When filtering yes/no columns, use the number 0 for _no_ and the number 1 for _yes_.
+### Sort List and Library views in SharePoint and Microsoft Lists
 
-- Filtering like this (with the query string URL) means never having to wait for search. SharePoint Search can sometimes take a few minutes to pick up on a change, but this filtering is immediate.
+Within any view, you can add a query string to the URL to sort by a column.  Here's an example, where the column name _Complete_ is sorted ascending:
 
-- You can filter by multiple keys/values by incrementing the numbers, like this:
+`https://<yoursite>.sharepoint.com/sites/Lists/mylist/AllItems.aspx?sortField=Complete&isAscending=true`
 
-`?useFiltersInViewXml=1&FilterField1=[internalFieldName]&FilterValue1=[value]&FilterField2=[internalFieldName2]&FilterValue2=[value]&FilterField3=[internalFieldName3]&FilterValue3=[value]`
+The `sortField` key is your internal column name, and `isAscending` determines the sort direction (_true_ for ascending, _false_ for descending).
+
+### Filter Lists and Library views by column values with FilterField and FilterValue
+
+Views can be filtered by specific column values with a query string URL. This could let you have a URL that filters by a status column value, or shows only items where some column value is _true_.
+
+Filtering like this means never having to wait for search. SharePoint Search can sometimes take a few minutes to pick up on a change, but this filtering is immediate.
+
+In a list or library, the minimum needed for this type of filter is:
+
+`AllItems.aspx?useFiltersInViewXml=1&FilterField1=<internalFieldName>&FilterValue1=<value>`
+
+(No `<` `>` brackets, you'd type the actual column value.)
+
+- `?useFiltersInViewXml=1` tells the List or Library view that you're appending filtering criteria.
+- `FilterField1=` is the _key_ and the value needs to be the internal name of the list/library column you want to filter by. (If you rename 'Title' to 'Product' in your list, you'll need to use 'Title' in your query string URL.)
+- When filtering yes/no columns, use the number `0` for _no_ and the number `1` for _yes_.
+- You can filter by multiple keys/values by incrementing the number pairs (up to 10), like this:
+`?useFiltersInViewXml=1&FilterField1=<internalFieldName>&FilterValue1=<valueA>&FilterField2=<internalFieldName2>&FilterValue2=<valueB>&FilterField3=<internalFieldName3>&FilterValue3=<valueC>`
+
+>[!TIP]
+>You can find out the internal column name by going to List Settings, choosing the column, and looking after the `&Field=` key in the URL. That's using a query string URL to help you make a query string URL!
+
+**Example Scenario using FilterField**
+_You might have a Power Automate Flow set to email a List view status report URL based about a product in a list… with hundreds of possible products. You wouldn't want to make separate views for each product._
+
+To solve this, you start with your All Items view and append URL query strings to create dynamic URLs for your Flow emails:
+`https://<mytenant>.sharepoint.com/Lists/mylist/AllItems.aspx`
+
+Here's that same List view, showing only items where the _Product_ column is equal to _Tacos_:
+`https://<mytenant>.sharepoint.com/Lists/mylist/AllItems.aspx?useFiltersInViewXml=1&FilterField1=Product&FilterValue1=Tacos`
+
+That same List view, showing only items where the _Product_ column are equal to _Pizza_... and now with a second filter to show where the _Tasty_ column is set to _Yes_:
+`https://<mytenant>.sharepoint.com/Lists/mylist/AllItems.aspx?useFiltersInViewXml=1&FilterField1=Product&FilterValue1=Pizza&FilterField2=Tasty&FilterValue2=1`
+
+Your boss wants it sorted newest to oldest, so go ahead and add the query string to sort by _Created_ date.
+
+`https://<mytenant>.sharepoint.com/Lists/mylist/AllItems.aspx?sortField=Created&isAscending=false&useFiltersInViewXml=1&FilterField1=Product&FilterValue1=Pizza&FilterField2=Tasty&FilterValue2=1`
+
+### FilterField for multiple values
+
+With a choice column, its possible to return multiple list items/library files from a single query string URL.  Replace `FilterValue1` with `FilterValues1` and list each choice out separated by `%3B%23`
+
+Here's an example of a query string URL on a list view that returns any items where the _Status_ field is set to either _Better_ or _Awesome_:
+
+`https://<mytenant>.sharepoint.com/Lists/mylist/AllItems.aspx?useFiltersInViewXml=1&FilterFields1=Status&FilterValues1=Better%3B%23Awesome`
 
 ## Further view filter reading from the experts
 
